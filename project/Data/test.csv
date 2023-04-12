@@ -1,0 +1,2 @@
+transaction_date,trade_date,ticker,company_name,owner_name,Title,transaction_type,last_price,Qty,shares_held,Owned,Value,stock_value
+2022-01-12 16:53:26,2022-01-11,ADSK,"Autodesk, Inc.",Hope Stephen W.,"VP, Chief Accounting Officer",S - Sale,260.47,-197,"3,755",-5%,"-$51,313",270.6300048828130
