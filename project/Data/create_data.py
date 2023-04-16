@@ -10,8 +10,7 @@ lock = threading.Lock()
 
 # Convert the tickers column to a list
 tickers = df['ticker'].unique().tolist()
-print(tickers)
-print(df.at[0, 'ticker'])# Define a function to get the stock value 30 days after a given date and symbol
+
 def get_stock_value_30_days_later(date, ticker):
     try:
         if ticker == 'FB':
@@ -30,7 +29,6 @@ def get_stock_value_30_days_later(date, ticker):
 def process_rows(start_index, end_index):
     for index in range(start_index, end_index):
         symbol = df.at[index, 'ticker']
-        print(symbol,index)
         date = df.at[index, 'trade_date']
         stocks = [get_stock_value_30_days_later(date, symbol)[0], get_stock_value_30_days_later(date, symbol)[-1]]
         # Acquire the lock before updating the dataframe
@@ -58,6 +56,6 @@ for t in threads:
     t.join()
 
 # Save the updated dataframe to a new file
-df.to_csv('output_all_dates_monthly_updated.csv', index=False)
+df.to_csv('final_stock_file.csv', index=False)
 
 

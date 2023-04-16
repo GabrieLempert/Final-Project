@@ -4,8 +4,11 @@ from tkinter import messagebox
 
 class CSVFileSelectorView:
     def __init__(self):
+
+
         self.root = tk.Tk()
         self.root.title("CSV File Selector")
+
 
         # Create a button to open the file dialog
         self.file_button = tk.Button(self.root, text="Select CSV File")
@@ -65,14 +68,24 @@ class CSVFileSelectorView:
         # Create a button to process the entries
         self.process_button = tk.Button(self.root, text="Process Entries",)
         self.process_button.pack(pady=10)
+        self.predict_button = tk.Button(self.root, text="Predict")
+        self.predict_button.pack(pady=10)
 
+        self.model_window = tk.Toplevel(self.root)
+        self.model_window.withdraw()
+        self.model_window_func()
+    def model_window_func(self):
+        self.model1_button = tk.Button(self.model_window, text="Lasso")
+        self.model2_button = tk.Button(self.model_window, text="DecisionTree Regressor")
+        self.model3_button = tk.Button(self.model_window, text="Linear Regression")
+        self.model4_button = tk.Button(self.model_window, text="Ridge")
     def on_button_click(self):
         file_path = filedialog.askopenfilename(filetypes=[("CSV Files", "*.csv")])
         if file_path:
             return file_path
         else:
             return None
-    def show_message(self,problem):
+    def show_warning(self, problem):
         messagebox.showwarning(f'{problem}', "No file selected.")
     def process_entries(self):
         ticker = self.ticker_entry.get()
@@ -85,10 +98,51 @@ class CSVFileSelectorView:
         owned = self.owned_entry.get()
         value = self.value_entry.get()
         stock_value = self.stock_value_entry.get()
-
+    def show_model_menu(self):
+        self.model_window.deiconify()
+        self.model_window.title("Model Selector")
+        self.model_window.geometry("200x200")
+        for widget in self.model_window.winfo_children():
+            if isinstance(widget, tk.Button):
+                widget.pack(pady=10)
     def start(self):
         # Start the Tkinter event loop
         self.root.mainloop()
 
-# Usage:
+
+    def open_stock_prediction(self,predicted_stock_value,previous_stock_value):
+        # Create a new window for stock prediction
+        stock_prediction_window = tk.Toplevel()
+        stock_prediction_window.title("Stock Prediction")
+
+        # Create labels to display predicted stock value and previous stock value
+        predicted_label = tk.Label(stock_prediction_window, text=f"Predicted Stock Value: {predicted_stock_value}")
+        predicted_label.pack(pady=10)
+        previous_label = tk.Label(stock_prediction_window, text=f"Previous Stock Value: {previous_stock_value}")
+        previous_label.pack(pady=10)
+
+        # Determine recommendation based on prediction and previous value
+        recommendation = ""
+        if predicted_stock_value > previous_stock_value:
+            recommendation = "Invest Now"
+        else:
+            recommendation = "Sell Now"
+
+        # Create label to display recommendation
+        recommendation_label = tk.Label(stock_prediction_window, text=f"Recommendation: {recommendation}")
+        recommendation_label.pack(pady=10)
+
+        # Create a button to close the stock prediction window
+        close_button = tk.Button(stock_prediction_window, text="Close", command=stock_prediction_window.destroy)
+        close_button.pack(pady=10)
+
+    def run(self):
+        self.root.mainloop()
+
+
+
+
+
+
+
 
