@@ -15,7 +15,7 @@ The "data" folder in this repository contains the initial data obtained from Ope
 ### Data Processing
 - We used the data to analyze the transaction data of shareholders in order to predict stock prices.
 - The data was processed and analyzed using Python programming language and various data manipulation libraries such as pandas and numpy.
-- We used the Random Forest Regressor algorithm to train our predictive model, which gave the best results in our analysis.
+- We used the Decision Tree Regressor algorithm to train our predictive model, which gave the best results in our analysis.
 
 ### Data Cleaning
 - The "stock_file.csv" file in the "data" folder was cleaned to eliminate tickers that do not exist or are not relevant to our project.
