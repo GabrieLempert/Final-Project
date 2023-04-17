@@ -46,7 +46,7 @@ class TitleFunctions:
             elif title == 'cob':
                 self.chair_function()
         else:
-            print("No function found for title:", title)
+            return 0
 
     def check_for_title(self, short_name=None, not_included=None):
         if short_name is None and not_included is None:
@@ -166,7 +166,7 @@ class Model:
             '10%': 5,
             'dir': 5
         }
-        self.owner_names, self.ticker = pickle.load(open('Backend/encoded_dicts', 'rb'))
+        self.owner_names, self.ticker = pickle.load(open('project/Backend/encoded_dicts', 'rb'))
 
     def get_file(self, file_path):
         df = pd.read_csv(file_path)
@@ -208,10 +208,10 @@ class Model:
     def load_models(self, model):
         last_key = max(self.transactions[self.today].keys(), key=key_function)
         model_files = {
-            'Lasso': 'Models/Lasso.joblib',
-            'DecisionTree Regressor': 'Models/DecisionTreeRegressor.joblib',
-            'Linear Regression': 'Models/LinearRegression.joblib',
-            'Ridge': 'Models/Ridge.joblib'
+            'Lasso': 'project/Models/Lasso.joblib',
+            'DecisionTree Regressor': 'project/Models/DecisionTreeRegressor.joblib',
+            'Linear Regression': 'project/Models/LinearRegression.joblib',
+            'Ridge': 'project/Models/Ridge.joblib'
         }
 
         model_ml = joblib.load(open(model_files[model], 'rb'))
