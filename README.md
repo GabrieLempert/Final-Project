@@ -5,6 +5,27 @@
 
 This project serves as the culmination of our Bachelor's in Computer Science, representing the culmination of our extensive research and experimentation. Our main objective was to develop a sophisticated prediction model for stock prices, leveraging transaction data from shareholders as a valuable source of information.
 
+## Data
+
+The "data" folder in this repository contains the initial data obtained from Open Insider, spanning from 2021 to January 2023. This data was used for analysis and model training in our project.
+
+### Data Source
+- The data was obtained from Open Insider (https://www.openinsider.com), a website that provides insider trading data of publicly traded companies in the United States.
+
+### Data Processing
+- We used the data to analyze the transaction data of shareholders in order to predict stock prices.
+- The data was processed and analyzed using Python programming language and various data manipulation libraries such as pandas and numpy.
+- We used the Random Forest Regressor algorithm to train our predictive model, which gave the best results in our analysis.
+
+### Data Cleaning
+- The "stock_file.csv" file in the "data" folder was cleaned to eliminate tickers that do not exist or are not relevant to our project.
+- We also created a new column called "in 30 days" in the cleaned dataset, which represents the target value for our stock price prediction.
+
+### Create Data Script
+- The "create_data.py" script, located in the "data" folder, is used to generate additional data for our analysis.
+- Note that this script requires the "yahoo finance" library, which can be installed using the following command only:
+- pip install -r project/Data/requirements.txt
+
 # Installation
 
 ## Prerequisites
@@ -26,6 +47,8 @@ datetime 4.3
 numpy 1.22.2
 pickle 0.7.6
 warnings 3.0.0
+yfinacne 0.2.18
+
 ## Usage
 
 1. Begin by cloning this repository to your local machine.
