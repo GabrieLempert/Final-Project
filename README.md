@@ -54,7 +54,7 @@ yfinacne 0.2.18
 1. Begin by cloning this repository to your local machine.
 2. Navigate to the project directory.
 3. Install the required dependencies by executing the pip install -r requirements.txt command.
-4. Launch the Python script by running the python main.py command.
+4. Launch the Python script by running the python project/main.py or python3 project/main.py command.
 
 ## Model-View-Controller (MVC) Architecture
 
