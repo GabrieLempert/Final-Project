@@ -1,5 +1,5 @@
-import project.UI.get_file_ui as v
-import project.Backend.predict_new as md
+import UI.get_file_ui as v
+import Backend.predict_new as md
 
 class Controller:
     def __init__(self, view_p, model_p):

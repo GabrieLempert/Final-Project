@@ -2,7 +2,7 @@ import yfinance as yf
 import pandas as pd
 import threading
 
-df = pd.read_csv('output_all_dates_monthly.csv')
+df = pd.read_csv('stock_file.csv')
 
 # Define a lock for thread synchronization
 lock = threading.Lock()
