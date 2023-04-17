@@ -2,13 +2,15 @@ from tkinter import filedialog
 import tkinter as tk
 from tkinter import messagebox
 
+
 class CSVFileSelectorView:
     def __init__(self):
-
+        """
+        Constructor for the CSVFileSelectorView class. Initializes the GUI elements.
+        """
 
         self.root = tk.Tk()
         self.root.title("CSV File Selector")
-
 
         # Create a button to open the file dialog
         self.file_button = tk.Button(self.root, text="Select CSV File")
@@ -66,28 +68,41 @@ class CSVFileSelectorView:
         self.stock_value_entry.pack()
 
         # Create a button to process the entries
-        self.process_button = tk.Button(self.root, text="Process Entries",)
+        self.process_button = tk.Button(self.root, text="Process Entries")
         self.process_button.pack(pady=10)
+
+        # Create a button to predict stock value
         self.predict_button = tk.Button(self.root, text="Predict")
         self.predict_button.pack(pady=10)
 
+        # Create a separate window for selecting the machine learning model
         self.model_window = tk.Toplevel(self.root)
         self.model_window.withdraw()
         self.model_window_func()
+
     def model_window_func(self):
+        """
+        Helper method to initialize the GUI elements for the model selection window.
+        """
         self.model1_button = tk.Button(self.model_window, text="Lasso")
         self.model2_button = tk.Button(self.model_window, text="DecisionTree Regressor")
         self.model3_button = tk.Button(self.model_window, text="Linear Regression")
         self.model4_button = tk.Button(self.model_window, text="Ridge")
+
     def on_button_click(self):
+        """Callback function when 'Select CSV File' button is clicked"""
         file_path = filedialog.askopenfilename(filetypes=[("CSV Files", "*.csv")])
         if file_path:
             return file_path
         else:
             return None
+
     def show_warning(self, problem):
+        """Show warning message box"""
         messagebox.showwarning(f'{problem}', "No file selected.")
+
     def process_entries(self):
+        """Process entries from the entry boxes"""
         ticker = self.ticker_entry.get()
         owner_name = self.owner_name_entry.get()
         title = self.title_entry.get()
@@ -98,20 +113,22 @@ class CSVFileSelectorView:
         owned = self.owned_entry.get()
         value = self.value_entry.get()
         stock_value = self.stock_value_entry.get()
+
     def show_model_menu(self):
+        """Show model selection menu"""
         self.model_window.deiconify()
         self.model_window.title("Model Selector")
         self.model_window.geometry("200x200")
         for widget in self.model_window.winfo_children():
             if isinstance(widget, tk.Button):
                 widget.pack(pady=10)
+
     def start(self):
-        # Start the Tkinter event loop
+        """Start the Tkinter event loop"""
         self.root.mainloop()
 
-
-    def open_stock_prediction(self,predicted_stock_value,previous_stock_value):
-        # Create a new window for stock prediction
+    def open_stock_prediction(self, predicted_stock_value, previous_stock_value):
+        """Open a new window to display stock prediction information"""
         stock_prediction_window = tk.Toplevel()
         stock_prediction_window.title("Stock Prediction")
 
@@ -138,11 +155,3 @@ class CSVFileSelectorView:
 
     def run(self):
         self.root.mainloop()
-
-
-
-
-
-
-
-
