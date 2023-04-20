@@ -298,14 +298,17 @@ class ImportData:
                 # If key does not exist, add owner_name as a key in the dictionary with a value equal to the length
                 # of the dictionary
                 dictionary[self.owner_name] = len(dictionary)
+                self.owner_name = dictionary[self.owner_name]
         elif attribute_name == 'ticker':
             # If key exists in dictionary, update ticker attribute with the corresponding value
             if key in dictionary:
                 self.ticker = dictionary[key]
+
             else:
                 # If key does not exist, add owner_name as a key in the dictionary with a value equal to the length
                 # of the dictionary
                 dictionary[self.owner_name] = len(dictionary)
+                self.ticker =   dictionary[self.ticker]
         else:
             # Raise an exception if the provided attribute_name does not exist
             raise Exception(f'{attribute_name} does not exist')
